@@ -1,4 +1,4 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 console.log(galleryItems);
@@ -11,11 +11,17 @@ for (const { preview, original, description } of galleryItems) {
 </a>`;
   list.insertAdjacentHTML("afterbegin", string);
 }
+list.addEventListener("click", onclick);
+
 function onclick(evt) {
-    evt.preventDefault();
-    if (evt.target.nodeName !== "IMG") {
-        return;
-    }
-
+  evt.preventDefault();
+  console.log(evt.target.nodeName);
+  if (evt.target.nodeName !== "IMG") {
+    return;
+  }
+  const lightbox = new SimpleLightbox(".gallery a", {
+    captionsData: "alt",
+    captionPosition: "bottom",
+    captionDelay: 250,
+  });
 }
-
